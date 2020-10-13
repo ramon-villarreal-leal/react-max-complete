@@ -13,7 +13,7 @@ class App extends Component {
     }
 
     switchNameHandler = () => {
-        console.log('was clicked');
+        this.state.persons[0].name = 'Peter';
     }
 
   render() {
