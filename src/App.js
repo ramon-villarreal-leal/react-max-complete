@@ -4,7 +4,7 @@ import './App.css';
 import Person from './Person/Person';
 
 const app = props => {
-    const stateArr = useState({
+    const [personsState, setPersonsState] = useState({
         persons: [
             { name: 'Ramon', age: 28 },
             { name: 'Laura', age: 26 },
@@ -13,14 +13,31 @@ const app = props => {
         otherState: 'some other value'
     });
 
+    const [otherState, setOtherState] = useState('some other value wooo');
+
+    console.log(personsState, otherState);
+
+    const switchNameHandler = () => {
+        console.log('was clicked');
+        // DONT DO THIS" personsState.persons[0].name = 'Peter';
+        setPersonsState({
+            persons: [
+                {name: 'Peter', age: 36},
+                {name: 'Laura', age: 30},
+                {name: 'Elaine', age: 45}
+            ],
+            otherState: personsState.otherState
+        });
+    };
+
     return (
         <div className="App">
             <h1>Hi, I'm a React App</h1>
             <p>This is really working!</p>
-            <button onClick={this.switchNameHandler}>Switch name</button>
-            <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-            <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
-            <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+            <button onClick={switchNameHandler}>Switch name</button>
+            <Person name={personsState.persons[0].name} age={personsState.persons[0].age}/>
+            <Person name={personsState.persons[1].name} age={personsState.persons[1].age}/>
+            <Person name={personsState.persons[2].name} age={personsState.persons[2].age}/>
         </div>
     );
 
@@ -29,23 +46,23 @@ const app = props => {
 
 export default app;
 
-state = {
-    persons: [
-        { name: 'Ramon', age: 28 },
-        { name: 'Laura', age: 26 },
-        { name: 'Elaine', age: 56 }
-    ],
-    otherState: 'some other value'
-};
+// state = {
+//     persons: [
+//         { name: 'Ramon', age: 28 },
+//         { name: 'Laura', age: 26 },
+//         { name: 'Elaine', age: 56 }
+//     ],
+//     otherState: 'some other value'
+// };
 
-switchNameHandler = () => {
-    console.log('was clicked');
-    // DONT DO THIS" this.state.persons[0].name = 'Peter';
-    this.setState({
-        persons: [
-            {name: 'Peter', age: 36},
-            {name: 'Laura', age: 30},
-            {name: 'Elaine', age: 45}
-        ]
-    })
-}
+// switchNameHandler = () => {
+//     console.log('was clicked');
+//     // DONT DO THIS" personsState.persons[0].name = 'Peter';
+//     this.setState({
+//         persons: [
+//             {name: 'Peter', age: 36},
+//             {name: 'Laura', age: 30},
+//             {name: 'Elaine', age: 45}
+//         ]
+//     })
+// }
