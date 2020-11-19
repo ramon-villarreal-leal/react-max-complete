@@ -45,6 +45,10 @@ const app = props => {
             <Person
                 name={personsState.persons[2].name}
                 age={personsState.persons[2].age}/>
+
+            <Person
+            name={personsState.persons[3].name}
+            age={personsState.persons[3].age}/>
         </div>
 
 
